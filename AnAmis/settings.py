@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +43,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
+    'Booking',
+    'Admin',
+    'channels',
     
 ]
 
@@ -110,7 +114,17 @@ SECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'
 SECURE_REFERRER_POLICY = 'same-origin'
 
 
-WSGI_APPLICATION = 'AnAmis.wsgi.application'
+# WSGI_APPLICATION = 'AnAmis.wsgi.application'
+ASGI_APPLICATION = 'AnAmis.asgi.application'
+
+
+#Reis setup
+CHANNEL_LAYERS = {
+    "default":{
+        "BACKEND":"channels_redis.core.RedisChannelLayer",
+        "CONFIG":{"hosts":[("127.0.0.1",6379)]},
+    }
+}
 
 
 # Database
