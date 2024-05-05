@@ -27,10 +27,11 @@ class LoginSerialisers(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
     access = serializers.CharField(read_only=True)
     refresh = serializers.CharField(read_only=True)
+    is_superuser = serializers.BooleanField(read_only=True)
     
     class Meta:
         model=CustomUser
-        fields = ['id', 'email', 'password', 'access', 'refresh']
+        fields = ['id', 'email', 'is_superuser', 'password', 'access', 'refresh']
         
     def validate(self, attrs):
         email = attrs.get('email')
@@ -46,8 +47,14 @@ class LoginSerialisers(serializers.ModelSerializer):
         
         return{
             'email' : user.email,
+            'is_superuser': user.is_superuser,
             'access' : str(user_token.get('access')),
             'refresh': str(user_token.get('refresh'))
         }
         
+
+class ListUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields ='__all__'
         

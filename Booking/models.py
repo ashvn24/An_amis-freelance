@@ -20,6 +20,8 @@ class Book(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.PROTECT)
     time = models.CharField(choices=available)
     date = models.DateField()
+    Phone = models.BigIntegerField(blank=True, null=True)
+    Name = models.CharField(max_length=200)
     
     def __str__(self):
         return self.user.email

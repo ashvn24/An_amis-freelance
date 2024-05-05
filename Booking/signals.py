@@ -17,7 +17,9 @@ def appointment_created(sender, instance, created, **kwargs):
                 "type": "appointment_created",
                 "message": "New appointment created.",
                 "booking_details": {
-                    "user": instance.user.email,
+                    "customer_name": instance.user.email,
+                    "Name": instance.Name,
+                    "Phone": instance.Phone,
                     "time": instance.time,
                     "date": instance.date.strftime("%Y-%m-%d"),
                 },
