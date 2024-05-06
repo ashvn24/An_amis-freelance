@@ -8,7 +8,7 @@ class BookSerializer(serializers.ModelSerializer):
         model = Book
         fields = ['id', 'customer_name', 'time', 'date', 'user','Name','Phone']
         extra_kwargs ={
-            "user": {"write_only": True}
+            "user": {"read_only": True}
         }
         
     def get_customer_name(self,obj):
