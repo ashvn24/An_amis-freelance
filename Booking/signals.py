@@ -9,6 +9,7 @@ import json
 @receiver(post_save, sender=Book)
 def appointment_created(sender, instance, created, **kwargs):
     if created:
+        
         # Notify admin about the new appointment along with details
         channel_layer = channels.layers.get_channel_layer()
         async_to_sync(channel_layer.group_send)(

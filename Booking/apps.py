@@ -7,6 +7,4 @@ class BookingConfig(AppConfig):
 
     def ready(self):
         import Booking.signals
-    
-    def ready(self):
-        import Booking.task 
+        import Booking.task

@@ -193,6 +193,6 @@ CELERY_RESULT_BACKEND = 'django-db'
 CELERY_BEAT_SCHEDULE = {
       'del_prev_bookings':{
           'task':'Booking.task.del_prev_book',
-          'schedule':crontab(minute=0, hour=0),
+          'schedule':crontab(minute=00, hour=00),
       }
 }
